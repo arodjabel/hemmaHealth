@@ -1,4 +1,5 @@
 import React from 'react';
+import './nav.css';
 import {
   Collapse,
   Navbar,
@@ -27,7 +28,7 @@ class HemmaNav extends React.Component {
 
   render() {
     return (
-      <Navbar color="faded" light expand="md">
+      <Navbar className={"bg-primary"} light expand="md" >
         <NavbarBrand href="/">Hemma Health</NavbarBrand>
         <NavbarToggler onClick={this.toggle}/>
         <Collapse isOpen={this.state.isOpen} navbar>

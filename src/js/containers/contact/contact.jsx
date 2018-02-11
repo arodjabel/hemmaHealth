@@ -1,23 +1,20 @@
 import React from 'react';
 import { Container, Row, Col, Jumbotron } from 'reactstrap';
+import HemmaPageTemplate from "../../components/page/pageTemplate";
 
-class HemmaContact extends React.Component{
-  constructor(props){
+class HemmaContact extends React.Component {
+  constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <Container>
+      <HemmaPageTemplate
+        title={"Let's Get In Touch"}
+        subTitle={"Please fill out and submit the contact form. We will be in touch soon."}>
         <Row>
-          <Col xs={12}>
-            <Jumbotron>
-              <h1 className="display-3">Let's Get In Touch</h1>
-              <p className="lead">Please fill out and submit the contact form. We will be in touch soon.</p>
-            </Jumbotron>
-          </Col>
         </Row>
-      </Container>
+      </HemmaPageTemplate>
     )
   }
 }

@@ -13,6 +13,7 @@ import HemmaAbout from "../../containers/about/about";
 import HemmaLogin from "../../containers/login/login";
 import HemmaContact from "../../containers/contact/contact";
 import HemmaServices from "../../containers/services/services";
+import HemmaQuality from '../../containers/quality/quality';
 
 const auth = () => {
 };
@@ -60,7 +61,7 @@ export default () => {
           path="/login"
           render={(props) => {
             handleAuthentication(props);
-            return <HemmaLogin auth={auth} {...props} /> ;
+            return <HemmaLogin auth={auth} {...props} />;
           }}
         />
         <Route
@@ -82,6 +83,13 @@ export default () => {
           render={(props) => {
             handleAuthentication(props);
             return (isAuth()) ? <HemmaServices auth={auth} {...props} /> : <Redirect to="/login"/>;
+          }}
+        />
+        <Route
+          path="/quality"
+          render={(props) => {
+            handleAuthentication(props);
+            return (isAuth()) ? <HemmaQuality auth={auth} {...props} /> : <Redirect to="/login"/>;
           }}
         />
       </div>

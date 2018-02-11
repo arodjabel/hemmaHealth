@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import { Row, Col, Card, CardHeader, CardBody, CardText, CardTitle, CardSubtitle } from 'reactstrap';
+import HemmaPageTemplate from '../../components/page/pageTemplate';
+
 import serviceConstants from './services.constant';
 import './services.css';
 
@@ -8,25 +10,39 @@ class HemmaServices extends React.Component {
     super(props);
     this.getColumns = this.getColumns.bind(this);
     this.getServiceConstants = this.getServiceConstants.bind(this);
+    this.getCardDetails = this.getCardDetails.bind(this);
   }
 
   getServiceConstants() {
-    return serviceConstants();
+    return serviceConstants().serviceCards;
+  }
+
+  getCardDetails(details) {
+    return details.map((row) => {
+      return (
+        <CardBody key={row.title}>
+          <CardSubtitle tag={'h5'} className={'text-secondary'}>{row.title}</CardSubtitle>
+          {row.body.map((str) => {
+            return <CardText key={str}>{str}</CardText>
+          })}
+        </CardBody>
+      );
+    });
   }
 
   getColumns() {
-    const serviceConsts = this.getServiceConstants();
-    const columns = serviceConsts.map((row) => {
+    const serviceConstants = this.getServiceConstants();
+    const columns = serviceConstants.map((row) => {
       return (
-        <Col xs={12} sm={6} md={4} key={row.id} className="bottom-40">
-          <Card>
-            {/*<CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />*/}
+        <Col xs={12} xl={6} key={row.id} className="bottom-40">
+          <Card >
+            <CardHeader tag="h3" className={"bg-primary text-white"}>
+              {row.title}
+            </CardHeader>
             <CardBody>
-              <CardTitle>{row.title}</CardTitle>
-              {/*<CardSubtitle>Card subtitle</CardSubtitle>*/}
-              <CardText>{row.body}</CardText>
-              {/*<Button>Button</Button>*/}
+              <CardTitle>{row.subTitle}</CardTitle>
             </CardBody>
+            {this.getCardDetails(row.details)}
           </Card>
         </Col>
       );
@@ -36,9 +52,12 @@ class HemmaServices extends React.Component {
 
   render() {
     return (
-      <Container>
+      <HemmaPageTemplate
+        title={"Our Service Offering"}
+        subTitle={"You need it? We have it."}
+      >
         <Row>{this.getColumns()}</Row>
-      </Container>
+      </HemmaPageTemplate>
     )
   }
 }

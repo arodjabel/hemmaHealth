@@ -1,0 +1,66 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 111.5" enable-background="new 0 0 100 111.5" xml:space="preserve">
+<style>
+	svg {
+
+        width: 25%;
+        margin: 0 auto;
+	    background: #000;
+	}
+
+	@keyframes offset {
+
+        25% {
+
+           stroke-dashoffset: 0;
+        }
+
+        50% {
+
+           stroke-dashoffset: 0;
+        }
+
+        75% {
+
+           stroke-dashoffset: 360;
+        }
+
+        100% {
+
+           stroke-dashoffset: 360;
+        }
+	}
+
+	@keyframes fill {
+
+        25% {
+
+           fill: transparent;
+        }
+
+        50% {
+
+           fill: #78C2AD;
+        }
+
+        75% {
+
+           fill: transparent;
+        }
+
+        100% {
+
+           fill: transparent;
+        }
+	}
+
+	.Letter {
+
+	    stroke-dasharray: 360;
+	    stroke-dashoffset: 360;
+	    animation: offset 6s linear infinite, fill 6s linear infinite;
+	}
+</style>	
+<g>
+	<path class="Letter" fill="transparent" stroke="#78C2AD" stroke-width=".8px" d="M33.6,22v28.2h32.6V22h8.8v67.4h-8.8V57.9H33.6v31.6h-8.7V22H33.6z"/>
+</g>
+</svg>

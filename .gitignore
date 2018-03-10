@@ -9,4 +9,5 @@
 /build/
 /app/frontend/
 /app/globalConfig.js
-/node_modules/
+node_modules
+/node_modules/*

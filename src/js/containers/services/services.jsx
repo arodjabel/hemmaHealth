@@ -10,7 +10,6 @@ class HemmaServices extends React.Component {
     super(props);
     this.getColumns = this.getColumns.bind(this);
     this.getServiceConstants = this.getServiceConstants.bind(this);
-    this.getCardDetails = this.getCardDetails.bind(this);
   }
 
   getServiceConstants() {
@@ -35,7 +34,7 @@ class HemmaServices extends React.Component {
     const columns = serviceConstants.map((row) => {
       return (
         <Col xs={12} xl={6} key={row.id} className="bottom-40">
-          <Card >
+          <Card>
             <CardHeader tag="h3" className={"bg-primary text-white"}>
               {row.title}
             </CardHeader>

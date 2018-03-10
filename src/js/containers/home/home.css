@@ -1,7 +1,7 @@
 .home-tile-main-image {
     height: 300px;
     width: 100%;
-    background: url('../../../images/human-on-cliff.jpg') no-repeat center center fixed;
+    background: url('../../../images/human-on-cliff.jpg') no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

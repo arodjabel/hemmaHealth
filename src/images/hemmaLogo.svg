@@ -54,7 +54,6 @@
 	}
 
 	.Letter {
-
 	    stroke-dasharray: 360;
 	    stroke-dashoffset: 360;
 	    animation: offset 6s linear infinite, fill 6s linear infinite;

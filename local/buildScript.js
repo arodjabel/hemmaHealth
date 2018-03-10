@@ -10,7 +10,8 @@ function successMsg(e) {
   console.log(chalk.green('** ', e))
 }
 
-function errorCb() {
+function errorCb(e) {
+  console.log(e);
   errorMsg('SOMETHING WENT WRONG');
 }
 
@@ -48,17 +49,40 @@ function buildFrontEnd() {
 
 function copyAssets() {
   return new Promise((resolve, reject) => {
-    fs.copyRecursive('./build', './app/frontend', function (err) {
+    function newCopy() {
+      fs.copyRecursive('./build', './app/frontend', function (err) {
+        if (err) {
+          reject();
+        } else {
+          successMsg('Copied Assets');
+          resolve();
+        }
+      });
+    }
+
+    fs.rmrf('./app/frontend', function (err) {
       if (err) {
         reject();
+      } else {
+        newCopy();
       }
-      resolve();
     });
   })
 }
 
-// copy build to app dir
-// copy package.json to app dir
+function copyPackageJson() {
+  return new Promise((resolve, reject) => {
+    fs.copy('package.json', './app/package.json', { replace: true }, function (err) {
+      if (err) {
+        reject();
+      } else {
+        successMsg('Copied Package Json');
+        resolve();
+      }
+    });
+  });
+}
+
 // eb deploy
 
 runTests()
@@ -66,5 +90,8 @@ runTests()
     return buildFrontEnd().then(null, errorCb)
   }, errorCb)
   .then(() => {
-    return copyAssets().then(finish, errorCb)
+    return copyAssets().then(null, errorCb)
+  })
+  .then(() => {
+    return copyPackageJson().then(finish, errorCb)
   });

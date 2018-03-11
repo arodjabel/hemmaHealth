@@ -1,11 +1,11 @@
 import Axios from 'axios';
 
-export const recaptchaPost = (_data) => {
+export const recaptchaPost = (data) => {
   const url = '/api/v1/recaptcha';
   const headers = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
   };
-  const data = { key: _data };
 
   return {
     promise: new Axios.request({
@@ -15,4 +15,4 @@ export const recaptchaPost = (_data) => {
       data: JSON.stringify(data)
     })
   };
-}
+};

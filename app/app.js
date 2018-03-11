@@ -16,9 +16,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(express.static(path.join(__dirname, 'frontend')));
-
-app.post('api/v1/recaptcha', recaptcha);
+app.post('/api/v1/recaptcha', recaptcha);
 
 app.get('/api/v1/sitemap', sitemap);
 
@@ -34,9 +32,10 @@ app.get('/api/get/medium', (req, res) => {
   getMedium().then(success, error);
 });
 
+app.use(express.static(path.join(__dirname, 'frontend')));
 app.use('/*', (req, res) => {
   res.sendFile('frontend/index.html', { root: __dirname });
 });
 
-console.log(port);
-app.listen(port);
+
+app.listen(port, () => console.log(`Listening on port ${port}`));

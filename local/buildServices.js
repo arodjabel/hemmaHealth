@@ -2,24 +2,24 @@ const execSync = require('child_process').execSync;
 const chalk = require('chalk');
 const fs = require('fs.extra');
 
-function errorMsg(e) {
+export const errorMsg = (e) => {
   console.log(chalk.red('**** ERROR ****', e));
-}
+};
 
-function successMsg(e) {
-  console.log(chalk.green('** ', e))
-}
+export const successMsg = (e) => {
+  console.log(chalk.green('** ', e));
+};
 
-function errorCb(e) {
+export const errorCb = (e) => {
   console.log(e);
   errorMsg('SOMETHING WENT WRONG');
-}
+};
 
-function finish() {
+export const finish = () => {
   successMsg('ALL DONE, SUCCESSFULLY');
-}
+};
 
-function runTests() {
+export const runTests = () => {
   return new Promise((resolve, reject) => {
     try {
       const code = execSync('npm run test');
@@ -31,12 +31,12 @@ function runTests() {
       reject();
     }
   });
-}
+};
 
-function buildFrontEnd() {
+export const buildFrontEnd = () => {
   return new Promise((resolve, reject) => {
     try {
-      const fe = execSync('npm run build');
+      const fe = execSync('npm run buildClient');
       successMsg('Build Success');
       resolve();
     }
@@ -45,12 +45,12 @@ function buildFrontEnd() {
       reject();
     }
   });
-}
+};
 
-function copyAssets() {
+export const copyAssets = () => {
   return new Promise((resolve, reject) => {
     function newCopy() {
-      fs.copyRecursive('./build', './app/frontend', function (err) {
+      fs.copyRecursive('./client/build', './app/frontend', function (err) {
         if (err) {
           reject();
         } else {
@@ -68,11 +68,11 @@ function copyAssets() {
       }
     });
   })
-}
+};
 
-function copyPackageJson() {
+export const copyPackageJson = () => {
   return new Promise((resolve, reject) => {
-    fs.copy('package.json', './app/package.json', { replace: true }, function (err) {
+    fs.copy('./client/package.json', './app/package.json', { replace: true }, function (err) {
       if (err) {
         reject();
       } else {
@@ -81,17 +81,4 @@ function copyPackageJson() {
       }
     });
   });
-}
-
-// eb deploy
-
-runTests()
-  .then(() => {
-    return buildFrontEnd().then(null, errorCb)
-  }, errorCb)
-  .then(() => {
-    return copyAssets().then(null, errorCb)
-  })
-  .then(() => {
-    return copyPackageJson().then(finish, errorCb)
-  });
+};

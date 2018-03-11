@@ -1,0 +1,21 @@
+{
+  "name": "hemmahealth",
+  "version": "0.1.0",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3001/"
+    }
+  },
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node ../app/app.js",
+    "client": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}

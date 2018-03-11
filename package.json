@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
+    "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "helmet": "^3.11.0",
     "history": "^4.7.2",
@@ -22,12 +23,12 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "startAws": "node app/app.js",
-    "build": "react-scripts build",
-    "test": "jest",
-    "eject": "react-scripts eject",
-    "ebDeploy": "npx babel-node local/buildScript.js"
+    "dev": "cd ./client && npm start",
+    "start": "node app/app.js",
+    "buildClient": "cd ./client && npm run build",
+    "buildApp": "npx babel-node local/buildApp.js",
+    "buildAndDeploy": "npx babel-node local/buildAppAndDeploy.js",
+    "test": "jest"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

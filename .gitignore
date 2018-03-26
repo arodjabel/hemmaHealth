@@ -1,6 +1,5 @@
 
 /.idea/
-
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
@@ -9,7 +8,8 @@
 /build/
 /app/frontend/
 /app/globalConfig.js
-/node_modules/
 /app/package.json
-/client/node_modules/
 /client/build/
+node_modules/
+/app.zip
+/Archive.zip

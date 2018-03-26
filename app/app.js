@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 
 //services
+const mediumBlog = require('./backend/api/v1/mediumBlog/mediumBlog');
 const sitemap = require('./backend/api/v1/sitemap/sitemap');
 const recaptcha = require('./backend/api/v1/recaptcha/recaptcha');
 
@@ -20,22 +21,11 @@ app.post('/api/v1/recaptcha', recaptcha);
 
 app.get('/api/v1/sitemap', sitemap);
 
-app.get('/api/get/medium', (req, res) => {
-  function success(mediumJson) {
-    res.status(200).send(JSON.parse(mediumJson));
-  }
-
-  function error(e) {
-    res.status(400).sent({ response: e, error: true });
-  }
-
-  getMedium().then(success, error);
-});
+app.get('/api/get/medium', mediumBlog);
 
 app.use(express.static(path.join(__dirname, 'frontend')));
 app.use('/*', (req, res) => {
   res.sendFile('frontend/index.html', { root: __dirname });
 });
-
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

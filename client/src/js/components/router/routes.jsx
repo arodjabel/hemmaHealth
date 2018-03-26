@@ -16,6 +16,8 @@ import HemmaServices from "../../containers/services/services";
 import HemmaQuality from '../../containers/quality/quality';
 import HemmaContactConfirmation from "../../containers/contact/contactConfirmation";
 import HemmaNotFound from "../../containers/notFound/notFound";
+import HemmaBlog from "../../containers/blog/blog";
+import HemmaSubscribe from "../../containers/subscribe/subscribe";
 
 const auth = () => {
 };
@@ -100,6 +102,13 @@ export default () => {
             render={(props) => {
               handleAuthentication(props);
               return (isAuth()) ? <HemmaQuality auth={auth} {...props} /> : <Redirect to="/login"/>;
+            }}
+          />
+          <Route
+            path="/subscribe"
+            render={(props) => {
+              handleAuthentication(props);
+              return (isAuth()) ? <HemmaSubscribe auth={auth} {...props} /> : <Redirect to="/login"/>;
             }}
           />
           <Route

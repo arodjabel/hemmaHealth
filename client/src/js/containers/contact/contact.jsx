@@ -1,13 +1,9 @@
 import React from 'react';
-import { Container, Row, Col, Jumbotron } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import HemmaPageTemplate from "../../components/page/pageTemplate";
 import ContactForm from '../../components/contact/contactForm';
 
 class HemmaContact extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <HemmaPageTemplate

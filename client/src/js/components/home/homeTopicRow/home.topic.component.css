@@ -1,0 +1,13 @@
+.home-card {
+    cursor: pointer;
+}
+
+.home-card:hover .home-card-body {
+    background: lightgrey
+}
+
+.home-card-body {
+    background: white;
+    text-shadow: 10px 10px 20px #ffffff;
+    border-radius: 5px 5px;
+}

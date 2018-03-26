@@ -27,6 +27,7 @@ export const runTests = () => {
       resolve();
     }
     catch (e) {
+      console.log(e.message);
       errorMsg('Tests Failed');
       reject();
     }
@@ -68,17 +69,4 @@ export const copyAssets = () => {
       }
     });
   })
-};
-
-export const copyPackageJson = () => {
-  return new Promise((resolve, reject) => {
-    fs.copy('./client/package.json', './app/package.json', { replace: true }, function (err) {
-      if (err) {
-        reject();
-      } else {
-        successMsg('Copied Package Json');
-        resolve();
-      }
-    });
-  });
 };

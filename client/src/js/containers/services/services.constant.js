@@ -120,6 +120,12 @@ export default () => {
             body: ['Tired of your patient statements? We can build completely custom statements just for you and we will handle the mailing too.']
           }
         ]
+      },
+      {
+        id: 7,
+        title: 'Something Else?',
+        subTitle: 'Give us a shout, we can probably help',
+        details: []
       }
     ]
   }

@@ -1,11 +1,21 @@
 import React from 'react';
+import { Row, Col } from 'reactstrap';
 
-class HemmaLogin extends React.Component{
-  render () {
-    return(
-      <h1>Login Please</h1>
+import HemmaPageTemplate from "../../components/page/pageTemplate";
+
+class HemmaLogin extends React.Component {
+  render() {
+    return (
+      <HemmaPageTemplate
+        title={"Login"}
+        subTitle={"This feature is under construction"}>
+        <Row>
+          <Col xs={12}>
+          </Col>
+        </Row>
+      </HemmaPageTemplate>
     );
   }
 }
 
-export default  HemmaLogin;
+export default HemmaLogin;

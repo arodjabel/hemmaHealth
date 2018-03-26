@@ -68,7 +68,6 @@ class ContactForm extends React.Component {
   }
 
   submitForm(e) {
-    console.log('click');
     e.stopPropagation();
     this.setState({
       loading: true
@@ -91,6 +90,7 @@ class ContactForm extends React.Component {
         <FormGroup>
           <Label for="whoAreYou">Who are you?</Label>
           <Input type="text"
+                 autoComplete={"name"}
                  name="name"
                  id="whoAreYou"
                  placeholder="Name, Please"
@@ -100,18 +100,21 @@ class ContactForm extends React.Component {
         <FormGroup>
           <Label for="whoAreYouWith">Who are you with?</Label>
           <Input type="text" name="employer" id="whoAreYouWith" placeholder="Company or Employer"
+                 autoComplete={"employer"}
                  onChange={this.inputChange}
                  disabled={this.state.loading}/>
         </FormGroup>
         <FormGroup>
           <Label for="whatsYourEmail">What is your Email?</Label>
           <Input type="text" name="email" id="whatsYourEmail" placeholder="Email, Please"
+                 autoComplete={"email"}
                  onChange={this.inputChange}
                  disabled={this.state.loading}/>
         </FormGroup>
         <FormGroup>
           <Label for="phoneNumber">Best contact number?</Label>
           <Input type="text" name="phone" id="phoneNumber" placeholder="Phone Number"
+                 autoComplete={"tel-nationl"}
                  onChange={this.inputChange}
                  disabled={this.state.loading}/>
         </FormGroup>

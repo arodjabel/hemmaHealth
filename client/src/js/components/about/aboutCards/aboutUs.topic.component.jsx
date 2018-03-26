@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, CardHeader, CardBody, CardTitle, CardText } from 'reactstrap';
+import { Row, Col, Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
 import aboutConsants from '../about.constants';
 

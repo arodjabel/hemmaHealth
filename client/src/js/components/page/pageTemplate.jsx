@@ -1,12 +1,10 @@
 import React from 'react';
 import { Container, Jumbotron, Row, Col } from 'reactstrap';
-import LoadingIndicator from "../loading/loading";
 
 class HemmaPageTemplate extends React.Component {
   render() {
     return (
       <Container>
-        {/*<LoadingIndicator/>*/}
         <Row className={"top-40"}>
           <Col>
             <Jumbotron>

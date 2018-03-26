@@ -5,8 +5,5 @@ runTests()
     return buildFrontEnd().then(null, errorCb)
   }, errorCb)
   .then(() => {
-    return copyAssets().then(null, errorCb)
-  })
-  .then(() => {
-    return copyPackageJson().then(finish, errorCb)
+    return copyAssets().then(finish, errorCb)
   });

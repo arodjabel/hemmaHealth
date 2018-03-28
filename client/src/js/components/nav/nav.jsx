@@ -93,12 +93,17 @@ class HemmaNav extends React.Component {
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
-                    <NavLink href="/login" className={'text-primary'}>Login</NavLink>
+                    <NavLink href="/subscribe" className={'text-primary'}>Subscribe</NavLink>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
-                    <NavLink href="/subscribe" className={'text-primary'}>Subscribe</NavLink>
+                    <NavLink href="/lob" className={'text-primary'}>Statements</NavLink>
+                  </NavItem>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavItem>
+                    <NavLink href="/login" className={'text-primary'}>Login</NavLink>
                   </NavItem>
                 </DropdownItem>
               </DropdownMenu>

@@ -18,6 +18,7 @@ import HemmaContactConfirmation from "../../containers/contact/contactConfirmati
 import HemmaNotFound from "../../containers/notFound/notFound";
 import HemmaBlog from "../../containers/blog/blog";
 import HemmaSubscribe from "../../containers/subscribe/subscribe";
+import HemmaLob from "../../containers/lob/lob";
 
 const auth = () => {
 };
@@ -109,6 +110,20 @@ export default () => {
             render={(props) => {
               handleAuthentication(props);
               return (isAuth()) ? <HemmaSubscribe auth={auth} {...props} /> : <Redirect to="/login"/>;
+            }}
+          />
+          <Route
+            path="/lob"
+            render={(props) => {
+              handleAuthentication(props);
+              return (isAuth()) ? <HemmaLob auth={auth} {...props} /> : <Redirect to="/login"/>;
+            }}
+          />
+          <Route
+            path="/blog"
+            render={(props) => {
+              handleAuthentication(props);
+              return (isAuth()) ? <HemmaBlog auth={auth} {...props} /> : <Redirect to="/login"/>;
             }}
           />
           <Route

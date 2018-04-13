@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 //services
 const mediumBlog = require('./backend/api/v1/mediumBlog/mediumBlog');
 const sitemap = require('./backend/api/v1/sitemap/sitemap');
-const recaptcha = require('./backend/api/v1/recaptcha/recaptcha');
+const recaptchaService = require('./backend/api/v1/recaptcha/recaptchaService');
 
 const port = process.env.PORT || 3001;
 const app = express();
@@ -17,7 +17,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.post('/api/v1/recaptcha', recaptcha);
+app.post('/api/v1/recaptcha/contact', recaptchaService.contact);
+app.post('/api/v1/recaptcha/subscribe', recaptchaService.subscribe);
 
 app.get('/api/v1/sitemap', sitemap);
 

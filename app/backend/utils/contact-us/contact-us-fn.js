@@ -1,69 +1,3 @@
-const request = require('request');
-const path = require('path');
-
-const sendEmail = require('../../../utils/aws-ses/aws-ses');
-const config = require('../../../../globalConfig');
-
-const validate = (data) => {
-  return new Promise((resolve, reject) => {
-    const payload = {
-      body: {
-        secret: config.recaptchaSecret,
-        response: data.recaptchaResponse
-      },
-      formData: data
-    };
-
-    recaptchaRequest(payload).then(resolve, reject);
-  });
-};
-
-
-const recaptchaRequest = function (payload) {
-  return new Promise(((resolve, reject) => {
-    const resolveFn = (response) => {
-      resolve(response);
-    };
-
-    const rejectFn = (response) => {
-      reject();
-    };
-
-    request({
-      method: 'POST',
-      uri: 'https://www.google.com/recaptcha/api/siteverify',
-      form: payload.body,
-      json: true
-    }, (error, response, body) => {
-      if (error) {
-        rejectFn('error recaptcha challange');
-      }
-
-      if (body.success) {
-        const toArr = [config.toEmail];
-        const fromEmail = config.fromEmail;
-        const subject = 'HEMMA HEALTH CONTACT US';
-        const emailText = buildMessage(payload.formData);
-
-        sendEmail(toArr, fromEmail, subject, emailText)
-          .then((response) => {
-            resolveFn({ recaptchaValid: true, message: response });
-          }, rejectFn);
-
-        sendEmail([payload.formData.email], fromEmail, 'Hemma Health Contact Us', customerResponse())
-          .then(() => {
-          }, () => {
-          });
-      } else {
-        resolveFn({
-          recaptchaValid: false,
-          message: 'Google denied the validation of recaptcha'
-        });
-      }
-    });
-  }));
-};
-
 const buildMessage = (responseBody) => {
   const noData = 'no value entered';
   if (!responseBody.name) {
@@ -121,5 +55,7 @@ const getTimeStamp = () => {
     }${date.getSeconds()}`;
 };
 
-
-module.exports = validate;
+module.exports = {
+  customerResponse,
+  buildMessage
+};

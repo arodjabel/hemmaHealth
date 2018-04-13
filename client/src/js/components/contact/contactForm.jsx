@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import history from '../../helpers/history';
-import { recaptchaPost } from "../../helpers/post";
+import { recaptchaContactPost } from "../../helpers/post";
 import './contactForm.css';
 
 const initialState = {
@@ -55,7 +55,6 @@ class ContactForm extends React.Component {
   }
 
   success() {
-    console.log('success');
     // this.resetState();
     history.push('/contact-us-confirmation')
   }
@@ -72,7 +71,7 @@ class ContactForm extends React.Component {
     this.setState({
       loading: true
     });
-    const promise = recaptchaPost(this.state).promise;
+    const promise = recaptchaContactPost(this.state).promise;
     promise.then(this.success, this.failure);
   }
 

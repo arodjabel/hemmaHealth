@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { recaptchaSubscribePost } from '../../helpers/post';
 
 class SubscribeComponent extends React.Component {
   constructor(props) {
@@ -37,8 +38,8 @@ class SubscribeComponent extends React.Component {
     this.setState({
       loading: true
     });
-    // const promise = recaptchaSubscriptionPost(this.state).promise;
-    // promise.then(this.success, this.failure);
+    const promise = recaptchaSubscribePost(this.state).promise;
+    promise.then(this.success, this.failure);
   }
 
   inputChange(e) {

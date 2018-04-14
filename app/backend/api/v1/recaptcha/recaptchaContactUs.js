@@ -12,7 +12,6 @@ const reacptchaContactUsCallback = (error, response, body, payload, resolveFn, r
   }
 
   if (body.success) {
-    console.log(body.success);
     const toArr = [config.toEmail];
     const fromEmail = config.fromEmail;
     const subject = 'HEMMA HEALTH CONTACT US';
@@ -44,8 +43,6 @@ const validateContactUsForm = (data) => {
       },
       formData: data
     };
-
-    console.log('hello');
 
     recaptchaRequest(payload, reacptchaContactUsCallback).then(resolve, reject);
   });

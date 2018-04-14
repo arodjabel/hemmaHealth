@@ -10,11 +10,11 @@ class HemmaBlog extends React.Component {
 
   getSubtitle() {
     return (
-      <div>
+      <span>
         <span>Follow Us! </span>
         <a href="https://medium.com/@consultinglife1"
            target="_blank">Medium</a>
-      </div>
+      </span>
     );
   }
 

@@ -15,11 +15,9 @@ class BlogComponent extends React.Component {
   }
 
   setMediumBlogPosts(d) {
-    console.log(d)
     if (d.payload && d.payload.references) {
       const postArr = Object.keys(d.payload.references.Post).map(i => d.payload.references.Post[i]);
       this.setState({ mediumPosts: postArr });
-      console.log(postArr);
     }
   }
 
